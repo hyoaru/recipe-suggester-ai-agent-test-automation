@@ -1,0 +1,16 @@
+services:
+  api_fastapi:
+    build: ./server
+    container_name: api_fastapi
+    working_dir: /app
+    command: poetry run fastapi dev main.py --host 0.0.0.0 --port 8001
+    volumes:
+      - ./server:/app
+    ports:
+      - "8001:8001"
+    networks:
+      - network
+
+networks:
+  network:
+    driver: bridge

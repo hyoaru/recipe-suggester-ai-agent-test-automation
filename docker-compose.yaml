@@ -1,0 +1,15 @@
+services:
+  api_fastapi:
+    build: ./server
+    container_name: api_fastapi
+    working_dir: /app
+    volumes:
+      - ./server:/app
+    ports:
+      - "8001:8001"
+    networks:
+      - network
+
+networks:
+  network:
+    driver: bridge
