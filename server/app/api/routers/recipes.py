@@ -1,3 +1,4 @@
+import time
 from typing import List
 from fastapi import APIRouter
 from pydantic import BaseModel
@@ -14,6 +15,7 @@ class RecipeSuggestBody(BaseModel):
 
 
 class RecipeSuggestResponse(BaseModel):
+    elapsed_time: float
     recipes: List[Recipe]
 
 
@@ -22,5 +24,14 @@ async def recipe_suggest(body: RecipeSuggestBody):
     ingredients = body.ingredients
     agent: RecipeSuggesterAgentABC = RecipeSuggesterAgent()
 
-    recipes = await agent.suggest(ingredients)
-    return {"recipes": recipes}
+    start_time = time.perf_counter()
+
+    result = await agent.suggest(ingredients)
+
+    end_time = time.perf_counter()
+    elapsed_time = end_time - start_time
+
+    return RecipeSuggestResponse(
+        elapsed_time=elapsed_time,
+        recipes=result.recipes,
+    )

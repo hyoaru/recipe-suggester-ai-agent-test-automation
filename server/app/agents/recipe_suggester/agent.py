@@ -1,13 +1,13 @@
 from typing import List
 
-from pydantic import BaseModel
 from pydantic_ai import Agent
+
 from app.agents.recipe_suggester.interfaces import RecipeSuggesterAgentABC
-from app.agents.recipe_suggester.models import Recipe
-
-
-class RecipeSuggesterAgentDependencies(BaseModel):
-    ingredients: List[str]
+from app.agents.recipe_suggester.models import (
+    Recipe,
+    RecipeSuggesterAgentDependencies,
+    RecipeSuggesterAgentSuggestResponse,
+)
 
 
 class RecipeSuggesterAgent(RecipeSuggesterAgentABC):
@@ -21,10 +21,14 @@ class RecipeSuggesterAgent(RecipeSuggesterAgentABC):
             ),
         )
 
-    async def suggest(self, ingredients: List[str]) -> List[Recipe]:
+    async def suggest(
+        self, ingredients: List[str]
+    ) -> RecipeSuggesterAgentSuggestResponse:
         result = await self.agent.run(
             "Suggest a recipe",
             deps=RecipeSuggesterAgentDependencies(ingredients=ingredients),
         )
 
-        return result.data
+        return RecipeSuggesterAgentSuggestResponse(
+            recipes=result.data,
+        )
