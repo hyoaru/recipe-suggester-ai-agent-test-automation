@@ -53,8 +53,12 @@ export default function DynamicListInput({
         {items.length > 0 && (
           <>
             <div className="mb-4 flex flex-wrap items-center justify-start gap-1 px-2">
-              {items.map((item) => (
-                <Badge className="font-normal" variant={"default"}>
+              {items.map((item, index) => (
+                <Badge
+                  key={`${item}-${index}`}
+                  className="font-normal"
+                  variant={"default"}
+                >
                   {item}{" "}
                 </Badge>
               ))}

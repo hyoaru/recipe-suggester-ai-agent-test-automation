@@ -1,6 +1,6 @@
 import { createContext, useContext, useEffect, useState } from "react";
 
-type Theme = "dark" | "light" | "system";
+export type Theme = "dark" | "light" | "system";
 
 type ThemeProviderProps = {
   children: React.ReactNode;
@@ -63,7 +63,7 @@ export function ThemeProvider({
   );
 }
 
-export const useTheme = () => {
+export const useThemeContext = () => {
   const context = useContext(ThemeProviderContext);
 
   if (context === undefined)
