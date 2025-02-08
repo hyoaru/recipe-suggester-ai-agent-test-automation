@@ -105,7 +105,7 @@ pipeline {
       }
 
       sh '''
-        docker image prune -a
+        yes | docker image prune -a
       '''
     }
 
