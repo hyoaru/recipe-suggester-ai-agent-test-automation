@@ -9,4 +9,4 @@ RUN poetry install
 
 COPY . .
 
-CMD [ "poetry", "run", "fastapi", "run", "main.py", "--host", "0.0.0.0", "--port", "8001" ]
+CMD [ "poetry", "run", "fastapi", "run", "main.py", "--host", "0.0.0.0", "--port", "8000" ]
