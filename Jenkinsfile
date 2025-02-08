@@ -20,6 +20,11 @@ pipeline {
   }
 
   post {
+    always {
+      sh '''
+        docker image prune -a
+      '''
+    }
     success {
       echo 'Deployment to Production was successful!'
     }
