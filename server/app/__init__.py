@@ -14,6 +14,7 @@ def create_app():
         allow_origins=[
             "http://localhost:8002",
             "https://hyoaru.github.io/recipe-suggester-ai",
+            "https://recipe-ai.anonalyze.org",
         ],
         allow_credentials=True,
         allow_methods=["*"],
