@@ -2,34 +2,32 @@ pipeline {
   agent any
 
   stages {
-    stage('Build Docket Imags') {
+    stage('Build Docker Images') {
       steps {
         sh '''
+          docker --version
           docker compose build
         '''
+      }
     }
-  }
-
-  stage('Deplo to Production') {
-    steps {
-      sh '''
-        docker compose up -d
-      '''
+    stage('Deploy to Production') {
+      steps {
+        sh '''
+          docker compose up -d
+        '''
       }
     }
   }
 
   post {
-    always {
+    success {
+      echo 'Deployment to Production was successful!'
+    }
+    failure {
       sh '''
         docker compose down -v
       '''
-    }
-    success {
-      echo 'Pipeline completed successfully!'
-    }
-    failure {
-      echo 'Pipeline failed. Check logs for more details.'
+      echo 'Deployment to Production failed!'
     }
   }
 }
