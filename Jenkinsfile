@@ -1,6 +1,10 @@
 pipeline {
   agent any
 
+  triggers {
+    githubPush()
+  }
+
   environment {
     OPENAI_API_KEY = credentials('OPENAI_API_KEY')
     VITE_CORE_API_URL = credentials('VITE_CORE_API_URL')
