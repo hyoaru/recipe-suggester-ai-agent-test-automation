@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<robot generator="Robot 7.2.2 (Python 3.12.3 on linux)" generated="2025-02-10T17:54:40.417182" rpa="false" schemaversion="5">
+<suite id="s1" name="Suites" source="/media/jiji/eb18153f-9be1-4f06-9fa8-cf63a398e614/Development/web/recipe-suggester-ai-agent-test-automation/robot-tests/tests/suites">
+<suite id="s1-s1" name="Recipe Suggestions" source="/media/jiji/eb18153f-9be1-4f06-9fa8-cf63a398e614/Development/web/recipe-suggester-ai-agent-test-automation/robot-tests/tests/suites/recipe_suggestions.robot">
+<kw name="Initialize" type="SETUP">
+<kw name="InitializeGlobalVariables" owner="base">
+<kw name="Log" owner="BuiltIn">
+<msg time="2025-02-10T17:54:40.537097" level="INFO">Setting up suite...</msg>
+<arg>Setting up suite...</arg>
+<doc>Logs the given message with the given level.</doc>
+<status status="PASS" start="2025-02-10T17:54:40.536993" elapsed="0.000157"/>
+</kw>
+<kw name="Get Environment Variable" owner="OperatingSystem">
+<msg time="2025-02-10T17:54:40.537384" level="INFO">${client_base_url} = http://localhost:8002</msg>
+<var>${client_base_url}</var>
+<arg>CLIENT_BASE_URL</arg>
+<doc>Returns the value of an environment variable with the given name.</doc>
+<status status="PASS" start="2025-02-10T17:54:40.537260" elapsed="0.000149"/>
+</kw>
+<kw name="Set Suite Variable" owner="BuiltIn">
+<msg time="2025-02-10T17:54:40.537671" level="INFO">${GLOBAL_CLIENT_BASE_URL} = http://localhost:8002</msg>
+<arg>${GLOBAL_CLIENT_BASE_URL}</arg>
+<arg>${client_base_url}</arg>
+<doc>Makes a variable available everywhere within the scope of the current suite.</doc>
+<status status="PASS" start="2025-02-10T17:54:40.537507" elapsed="0.000202"/>
+</kw>
+<status status="PASS" start="2025-02-10T17:54:40.536502" elapsed="0.001267"/>
+</kw>
+<status status="PASS" start="2025-02-10T17:54:40.536257" elapsed="0.001562"/>
+</kw>
+<test id="s1-s1-t1" name="ValidIngredientsInput" line="11">
+<kw name="OpenRecipeSuggestionsPage" owner="recipe_suggestions_resources">
+<kw name="Open Browser" owner="SeleniumLibrary">
+<msg time="2025-02-10T17:54:40.538519" level="INFO">Opening browser 'chrome' to base url 'http://localhost:8002/'.</msg>
+<arg>${GLOBAL_CLIENT_BASE_URL}/</arg>
+<arg>chrome</arg>
+<doc>Opens a new browser instance to the optional ``url``.</doc>
+<status status="PASS" start="2025-02-10T17:54:40.538351" elapsed="0.699551"/>
+</kw>
+<kw name="Maximize Browser Window" owner="SeleniumLibrary">
+<doc>Maximizes current browser window.</doc>
+<status status="PASS" start="2025-02-10T17:54:41.238161" elapsed="0.013358"/>
+</kw>
+<status status="PASS" start="2025-02-10T17:54:40.538161" elapsed="0.713520"/>
+</kw>
+<tag>Positive</tag>
+<tag>Smoke</tag>
+<status status="PASS" start="2025-02-10T17:54:40.537873" elapsed="0.714181"/>
+</test>
+<doc>Test suite for recipe suggestion functionality</doc>
+<status status="PASS" start="2025-02-10T17:54:40.435839" elapsed="0.817405"/>
+</suite>
+<status status="PASS" start="2025-02-10T17:54:40.417860" elapsed="0.836562"/>
+</suite>
+<statistics>
+<total>
+<stat pass="1" fail="0" skip="0">All Tests</stat>
+</total>
+<tag>
+<stat pass="1" fail="0" skip="0">Positive</stat>
+<stat pass="1" fail="0" skip="0">Smoke</stat>
+</tag>
+<suite>
+<stat name="Suites" id="s1" pass="1" fail="0" skip="0">Suites</stat>
+<stat name="Recipe Suggestions" id="s1-s1" pass="1" fail="0" skip="0">Suites.Recipe Suggestions</stat>
+</suite>
+</statistics>
+<errors>
+</errors>
+</robot>

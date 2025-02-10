@@ -1,0 +1,14 @@
+[project]
+name = "robot-tests"
+version = "0.1.0"
+description = "Add your description here"
+readme = "README.md"
+requires-python = ">=3.12"
+dependencies = [
+    "python-dotenv>=1.0.1",
+    "robotframework>=7.2.2",
+    "robotframework-pabot>=4.1.1",
+    "robotframework-requests>=0.9.7",
+    "robotframework-seleniumlibrary>=6.7.0",
+    "webdriver-manager>=4.0.2",
+]
