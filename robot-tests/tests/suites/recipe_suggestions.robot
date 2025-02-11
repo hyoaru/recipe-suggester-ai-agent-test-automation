@@ -14,6 +14,7 @@ ${SUITE_LOCATOR_INPUTTED_INGREDIENTS_CONTAINER}    xpath://input[@placeholder='T
 *** Keywords ***
 Initialize
     Initialize Global Variables
+    Set Screenshot Directory    ./results/screenshots
 
 
 *** Test Cases ***
@@ -21,9 +22,9 @@ Add Ingredients and Generate Suggestions
     [Tags]    Smoke    Positive
     Open Recipe Suggestions Page
 
-    Log    Waiting for page to load...
-    Set Selenium Implicit Wait    5s
-    Log    Page loaded.
+    Log    Waiting for input to be present in the DOM...
+    Wait Until Page Contains Element    ${SUITE_LOCATOR_INGREDIENTS_INPUT}    timeout=5s
+    Log    Input is present.
     
     Log    Inputing ingredients...
     @{ingredients}    Create List    egg    buttter
@@ -42,7 +43,7 @@ Add Ingredients and Generate Suggestions
     Should Not Be Empty    ${recipe_suggestions}
     Log    Capturing screenshots of generated suggestions...
     FOR    ${index}    ${recipe_suggestion}    IN ENUMERATE    @{recipe_suggestions}
-        Capture Element Screenshot    ${recipe_suggestion}    ./screenshots/generated_recipe_suggestion_${index}.png
+        Capture Element Screenshot    ${recipe_suggestion}    generated_recipe_suggestion_${index}.png
     END
     Log    Generated suggestions screenshots captured.
 
@@ -51,6 +52,10 @@ Add Ingredients and Generate Suggestions
 Empty Input Validation
     [Tags]    Negative    InputValidation
     Open Recipe Suggestions Page
+    
+    Log    Waiting for input to be present in the DOM...
+    Wait Until Page Contains Element    ${SUITE_LOCATOR_INGREDIENTS_INPUT}    timeout=5s
+    Log    Input is present.
     
     Log    Verifying input validation...
     Clear Element Text    ${SUITE_LOCATOR_INGREDIENTS_INPUT}
@@ -62,8 +67,48 @@ Empty Input Validation
     Log    Space character entered.
     
     Log    Validating that no ingredient was added...
+    Capture Page Screenshot    no_ingredient_added.png
     ${inputted_ingredients}=    Get WebElements    ${SUITE_LOCATOR_INPUTTED_INGREDIENTS_CONTAINER}/child::*
     Should Be Empty    ${inputted_ingredients}
     Log    Validated no ingredient was added.
+    
+    Close Browser
+    
+Numeric Input Validation
+    [Tags]    Negative    InputValidation
+    Open Recipe Suggestions Page
+    
+    Log    Waiting for input to be present in the DOM...
+    Wait Until Page Contains Element    ${SUITE_LOCATOR_INGREDIENTS_INPUT}    timeout=5s
+    Log    Input is present.
+    
+    Log    Verifying input validation for numeric values...
+    Clear Element Text    ${SUITE_LOCATOR_INGREDIENTS_INPUT}
+    Input Text    ${SUITE_LOCATOR_INGREDIENTS_INPUT}    12345
+    Press Keys    ${SUITE_LOCATOR_INGREDIENTS_INPUT}    SPACE
+    Capture Page Screenshot    numeric_input_validation.png
+    ${inputted_ingredients}=    Get WebElements    ${SUITE_LOCATOR_INPUTTED_INGREDIENTS_CONTAINER}/child::*
+    Should Be Empty    ${inputted_ingredients}
+    Log    Numeric values are correctly rejected
+
+    Close Browser
+
+Exceeding Character Limit Input Validation
+    [Tags]    Negative    InputValidation
+    Open Recipe Suggestions Page
+    
+    Log    Waiting for input to be present in the DOM...
+    Wait Until Page Contains Element    ${SUITE_LOCATOR_INGREDIENTS_INPUT}    timeout=5s
+    Log    Input is present.
+
+    Log    Verifying input validation for exceeding character limit...
+    Clear Element Text    ${SUITE_LOCATOR_INGREDIENTS_INPUT}
+    ${long_ingredient}=    Evaluate    "a" * 256
+    Input Text    ${SUITE_LOCATOR_INGREDIENTS_INPUT}    ${long_ingredient}
+    Press Keys    ${SUITE_LOCATOR_INGREDIENTS_INPUT}    SPACE
+    Capture Page Screenshot    exceeding_character_limit_input_validation.png
+    ${inputted_ingredients}=    Get WebElements    ${SUITE_LOCATOR_INPUTTED_INGREDIENTS_CONTAINER}/child::*
+    Should Be Empty    ${inputted_ingredients}
+    Log    Exceeding character limit is correctly rejected
     
     Close Browser
