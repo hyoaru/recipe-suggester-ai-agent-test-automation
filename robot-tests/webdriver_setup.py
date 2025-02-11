@@ -1,6 +1,5 @@
 import logging
-from webdriver_manager.chrome import ChromeDriverManager
-from webdriver_manager.firefox import GeckoDriverManager
+from selenium import webdriver
 
 logging.basicConfig(
   level=logging.INFO,
@@ -8,8 +7,5 @@ logging.basicConfig(
 )
 
 logging.info("Setting up webdrivers...")
-chrome_driver_path = ChromeDriverManager().install()
-logging.info(f"Chrome driver path: {chrome_driver_path}")
-firefox_driver_path = GeckoDriverManager().install()
-logging.info(f"Firefox driver path: {firefox_driver_path}")
+webdriver.Chrome()
 logging.info("Webdrivers setup successfully.")

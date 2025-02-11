@@ -8,6 +8,7 @@ pipeline {
   environment {
     OPENAI_API_KEY = credentials('OPENAI_API_KEY')
     VITE_CORE_API_URL = credentials('VITE_CORE_API_URL')
+    CLIENT_BASE_URL = credentials('CLIENT_BASE_URL')
   }
 
   options {
@@ -65,6 +66,23 @@ pipeline {
             }
           }
         }
+        
+        
+        stage('Populate Tests ENV') {
+          steps {
+            dir('./robot-tests') {
+              script {
+                echo "Populating the Tests environment variables..."
+                def envContent = """
+                  CLIENT_BASE_URL=${env.CLIENT_BASE_URL}
+                """.stripIndent()
+
+                writeFile file: '.env', text: envContent
+                echo "Tests environment file (.env) created succesfully."
+              }
+            }
+          }
+        }
       }
     }
 
@@ -76,6 +94,67 @@ pipeline {
           docker compose build
         '''
         echo "Building images built."
+      }
+    }
+    
+    stage('Start Test Containers') {
+      steps {
+        echo "Starting test containers..."
+        sh '''
+          docker compose up -d
+        '''
+        echo "Test containers started."
+      }
+    }
+    
+    stage("Run tests") {
+      agent {
+        docker {
+          image 'python:3.12-alpine'
+          args '--user root'
+          reuseNode true
+        }
+      }
+      steps {
+        dir("./robot-tests") {
+          script {
+            sh '''
+              echo "Current directory: $(pwd)"
+              ls -al
+
+              echo "Installing image dependencies..."
+              apk add bash curl chromium chromium-chromedriver
+              echo "Installed image dependencies."
+
+              echo "Installing python uv..."
+              pip install uv
+              echo "Installed python uv."
+              
+              echo "Installing dependencies..."
+              uv sync
+              echo "Installed dependencies."
+              
+              echo "Activating virual environment..."
+              source .venv/bin/activate
+              echo "Virtual environment activated."
+              
+              echo "Running tests..."
+              chmod +x ./run_tests.sh
+              bash ./run_tests.sh
+              echo "Tests completed."
+            '''
+          }
+        }
+      }
+    }
+    
+    stage('Stop Test Containers') {
+      steps {
+        echo "Stopping test containers..."
+        sh '''
+          docker compose stop
+        '''
+        echo "Test containers stopped."
       }
     }
 
@@ -115,7 +194,7 @@ pipeline {
 
     failure {
       sh '''
-        docker compose down -v
+        docker compose down
       '''
       echo 'Deployment to Production failed!'
     }
