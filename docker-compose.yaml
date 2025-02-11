@@ -23,7 +23,6 @@ services:
     depends_on:
       - recipe_suggester_ai_agent_api_fastapi
     volumes:
-      - client_web_volume_node_modules:/app/node_modules
       - ./client:/app
     networks:
       - network
@@ -42,6 +41,3 @@ services:
 networks:
   network:
     driver: bridge
-
-volumes:
-  client_web_volume_node_modules:
