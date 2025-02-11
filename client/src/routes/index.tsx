@@ -67,7 +67,7 @@ function RouteComponent() {
       </div>
       <div className="mt-4 space-y-4">
         {recipes.map((recipe) => (
-          <RecipeCard>
+          <RecipeCard key={`recipe-${recipe.name}`}>
             <RecipeCard.Title>{recipe.name}</RecipeCard.Title>
             <RecipeCard.Description>
               {recipe.description}
