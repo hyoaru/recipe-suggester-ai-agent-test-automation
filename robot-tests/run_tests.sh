@@ -1,3 +1,3 @@
 #!/bin/bash
 
-robot --outputdir results ./tests/suites
+pabot --processes 4 --outputdir results ./tests/suites
