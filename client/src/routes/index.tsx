@@ -27,7 +27,10 @@ function RouteComponent() {
     setIngredients([]);
     await getSuggestionsMutation.mutateAsync({ ingredients }).then((res) => {
       setRecipes(res.recipes);
+    }).catch((error) => {
+      toast.error(error.message)
     });
+
   }, [getSuggestionsMutation, ingredients]);
 
   return (

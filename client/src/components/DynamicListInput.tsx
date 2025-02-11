@@ -1,11 +1,19 @@
+import * as z from 'zod'
 import { KeyboardEvent, useCallback, useRef } from "react";
 import { Input } from "./ui/input";
 import { Badge } from "./ui/badge";
+import { toast } from 'sonner';
 
 type DynamicListInputProps = {
   items: string[];
   setItems: React.Dispatch<React.SetStateAction<string[]>>;
 };
+
+const dynamicInputListSchema = (
+  z.string()
+  .max(40, "Only up to 40 characters is allowed")
+  .regex(/^[a-zA-Z-]+$/, "Only letters and hyphens allowed")
+)
 
 export default function DynamicListInput({
   items,
@@ -35,7 +43,15 @@ export default function DynamicListInput({
       if (event.key == " " && inputValue?.trim() !== "") {
         if (!inputValue) return;
         event.preventDefault();
-        addItem(inputValue.trim());
+        const ingredient = inputValue.trim();
+        const parseResult = dynamicInputListSchema.safeParse(ingredient)
+
+        if (parseResult.error) {
+          toast.error(parseResult.error.formErrors.formErrors[0]) 
+          return
+        }
+
+        addItem(parseResult.data);
       } else if (
         event.key === "Backspace" &&
         inputValue === "" &&
