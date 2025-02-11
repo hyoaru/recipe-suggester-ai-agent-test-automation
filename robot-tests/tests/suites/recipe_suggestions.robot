@@ -112,3 +112,22 @@ Exceeding Character Limit Input Validation
     Log    Exceeding character limit is correctly rejected
     
     Close Browser
+
+Special Characters Input Validation
+    [Tags]    Negative    InputValidation
+    Open Recipe Suggestions Page
+    
+    Log    Waiting for input to be present in the DOM...
+    Wait Until Page Contains Element    ${SUITE_LOCATOR_INGREDIENTS_INPUT}    timeout=5s
+    Log    Input is present.
+    
+    Log    Verifying input validation for special characters...
+    Clear Element Text    ${SUITE_LOCATOR_INGREDIENTS_INPUT}
+    Input Text    ${SUITE_LOCATOR_INGREDIENTS_INPUT}    !@#$%^&*
+    Press Keys    ${SUITE_LOCATOR_INGREDIENTS_INPUT}    SPACE
+    Capture Page Screenshot    special_characters_input_validation.png
+    ${inputted_ingredients}=    Get WebElements    ${SUITE_LOCATOR_INPUTTED_INGREDIENTS_CONTAINER}/child::*
+    Should Be Empty    ${inputted_ingredients}
+    Log    Special characters are correctly rejected
+    
+    Close Browser
