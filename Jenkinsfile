@@ -123,7 +123,7 @@ pipeline {
               ls -al
 
               echo "Installing image dependencies..."
-              apk add bash curl chromium chromium-chromedriver
+              apk add bash curl
               echo "Installed image dependencies."
 
               echo "Installing python uv..."
@@ -137,6 +137,10 @@ pipeline {
               echo "Activating virual environment..."
               source .venv/bin/activate
               echo "Virtual environment activated."
+              
+              echo "Initialize playwright dependencies..."
+              rfbrowser init
+              echo "Playwright dependencies initialized."
               
               echo "Running tests..."
               chmod +x ./run_tests.sh
