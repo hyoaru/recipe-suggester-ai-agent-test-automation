@@ -37,36 +37,32 @@ Add Ingredients and Generate Suggestions
     Should Not Be Empty    ${recipe_suggestions}
     Log    Capturing screenshots of generated suggestions...
     FOR    ${index}    ${recipe_suggestion}    IN ENUMERATE    @{recipe_suggestions}
-        Take Screenshot    generated_recipe_suggestion_${index}.png    ${recipe_suggestion}
+        Take Screenshot    generated_recipe_suggestion_${index}    ${recipe_suggestion}
     END
     Log    Generated suggestions screenshots captured.
 
     Close Browser
 
-# Empty Input Validation
-#     [Tags]    Negative    InputValidation
-#     Open Recipe Suggestions Page
+Empty Input Validation
+    [Tags]    Negative    InputValidation
+    Open Recipe Suggestions Page
     
-#     Log    Waiting for input to be present in the DOM...
-#     Wait Until Page Contains Element    ${SUITE_LOCATOR_INGREDIENTS_INPUT}    timeout=5s
-#     Log    Input is present.
+    Log    Verifying input validation...
+    Clear Text    ${SUITE_LOCATOR_INGREDIENTS_INPUT}
+    Log    Cleared ingredients input value
     
-#     Log    Verifying input validation...
-#     Clear Element Text    ${SUITE_LOCATOR_INGREDIENTS_INPUT}
-#     Log    Cleared ingredients input value
+    Log    Entering space character using spacebar to the input...
+    Focus    ${SUITE_LOCATOR_INGREDIENTS_INPUT}
+    Press Keys    ${SUITE_LOCATOR_INGREDIENTS_INPUT}    Space
+    Log    Space character entered.
     
-#     Log    Entering space character using spacebar to the input...
-#     Set Focus To Element    ${SUITE_LOCATOR_INGREDIENTS_INPUT}
-#     Press Keys    ${SUITE_LOCATOR_INGREDIENTS_INPUT}    SPACE
-#     Log    Space character entered.
+    Log    Validating that no ingredient was added...
+    Take Screenshot    no_ingredient_added
+    ${inputted_ingredients}=    Get Elements    ${SUITE_LOCATOR_INPUTTED_INGREDIENTS_CONTAINER}/child::*
+    Should Be Empty    ${inputted_ingredients}
+    Log    Validated no ingredient was added.
     
-#     Log    Validating that no ingredient was added...
-#     Capture Page Screenshot    no_ingredient_added.png
-#     ${inputted_ingredients}=    Get WebElements    ${SUITE_LOCATOR_INPUTTED_INGREDIENTS_CONTAINER}/child::*
-#     Should Be Empty    ${inputted_ingredients}
-#     Log    Validated no ingredient was added.
-    
-#     Close Browser
+    Close Browser
     
 # Numeric Input Validation
 #     [Tags]    Negative    InputValidation
