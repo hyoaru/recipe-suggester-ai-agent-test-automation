@@ -1,600 +1,219 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<robot generator="Robot 7.2.2 (Python 3.12.3 on linux)" generated="2025-02-12T18:47:26.541400" rpa="false" schemaversion="5">
+<robot generator="Robot 7.2.2 (Python 3.12.3 on linux)" generated="2025-02-13T00:33:27.869099" rpa="false" schemaversion="5">
 <suite id="s1" name="Suites" source="/media/jiji/eb18153f-9be1-4f06-9fa8-cf63a398e614/Development/web/recipe-suggester-ai-agent-test-automation/robot-tests/tests/suites">
 <suite id="s1-s1" name="Recipe Suggestions" source="/media/jiji/eb18153f-9be1-4f06-9fa8-cf63a398e614/Development/web/recipe-suggester-ai-agent-test-automation/robot-tests/tests/suites/recipe_suggestions.robot">
 <kw name="Initialize" type="SETUP">
 <kw name="InitializeGlobalVariables" owner="base">
 <kw name="Log" owner="BuiltIn">
-<msg time="2025-02-12T18:47:26.722387" level="INFO">Setting up suite...</msg>
+<msg time="2025-02-13T00:33:28.040781" level="INFO">Setting up suite...</msg>
 <arg>Setting up suite...</arg>
 <doc>Logs the given message with the given level.</doc>
-<status status="PASS" start="2025-02-12T18:47:26.722234" elapsed="0.000225"/>
+<status status="PASS" start="2025-02-13T00:33:28.040560" elapsed="0.000298"/>
 </kw>
 <kw name="Get Environment Variable" owner="OperatingSystem">
-<msg time="2025-02-12T18:47:26.722796" level="INFO">${client_base_url} = http://localhost:8002</msg>
+<msg time="2025-02-13T00:33:28.041246" level="INFO">${client_base_url} = http://localhost:8002</msg>
 <var>${client_base_url}</var>
 <arg>CLIENT_BASE_URL</arg>
 <doc>Returns the value of an environment variable with the given name.</doc>
-<status status="PASS" start="2025-02-12T18:47:26.722610" elapsed="0.000221"/>
+<status status="PASS" start="2025-02-13T00:33:28.041014" elapsed="0.000271"/>
 </kw>
 <kw name="Set Suite Variable" owner="BuiltIn">
-<msg time="2025-02-12T18:47:26.723175" level="INFO">${GLOBAL_CLIENT_BASE_URL} = http://localhost:8002</msg>
+<msg time="2025-02-13T00:33:28.041735" level="INFO">${GLOBAL_CLIENT_BASE_URL} = http://localhost:8002</msg>
 <arg>${GLOBAL_CLIENT_BASE_URL}</arg>
 <arg>${client_base_url}</arg>
 <doc>Makes a variable available everywhere within the scope of the current suite.</doc>
-<status status="PASS" start="2025-02-12T18:47:26.722961" elapsed="0.000265"/>
+<status status="PASS" start="2025-02-13T00:33:28.041429" elapsed="0.000378"/>
 </kw>
-<status status="PASS" start="2025-02-12T18:47:26.721608" elapsed="0.001698"/>
+<status status="PASS" start="2025-02-13T00:33:28.039841" elapsed="0.002102"/>
 </kw>
-<kw name="Set Screenshot Directory" owner="SeleniumLibrary">
-<arg>./results/screenshots</arg>
-<doc>Sets the directory for captured screenshots.</doc>
-<status status="PASS" start="2025-02-12T18:47:26.723417" elapsed="0.000186"/>
+<status status="PASS" start="2025-02-13T00:33:28.039423" elapsed="0.002626"/>
 </kw>
-<status status="PASS" start="2025-02-12T18:47:26.721243" elapsed="0.002459"/>
-</kw>
-<test id="s1-s1-t1" name="Add Ingredients and Generate Suggestions" line="21">
+<test id="s1-s1-t1" name="Add Ingredients and Generate Suggestions" line="20">
 <kw name="Open Recipe Suggestions Page" owner="recipe_suggestions_resources">
-<kw name="Open Browser And Maximize" owner="helpers">
-<kw name="Open Browser" owner="SeleniumLibrary">
-<msg time="2025-02-12T18:47:26.724940" level="INFO">Opening browser 'chromium' to base url 'http://localhost:8002/'.</msg>
-<msg time="2025-02-12T18:47:26.724989" level="INFO">Cannot capture screenshot because no browser is open.</msg>
-<msg time="2025-02-12T18:47:26.725088" level="FAIL">ValueError: chromium is not a supported browser.</msg>
-<arg>${url}</arg>
-<arg>${browser}</arg>
-<doc>Opens a new browser instance to the optional ``url``.</doc>
-<status status="FAIL" start="2025-02-12T18:47:26.724739" elapsed="0.002718">ValueError: chromium is not a supported browser.</status>
-</kw>
-<kw name="Maximize Browser Window" owner="SeleniumLibrary">
-<doc>Maximizes current browser window.</doc>
-<status status="NOT RUN" start="2025-02-12T18:47:26.727709" elapsed="0.000043"/>
-</kw>
-<arg>${GLOBAL_CLIENT_BASE_URL}/</arg>
+<kw name="New Browser" owner="Browser">
+<msg time="2025-02-13T00:33:28.045252" level="INFO">{"browser": "chromium", "headless": true, "chromiumSandbox": false, "devtools": false, "handleSIGHUP": true, "handleSIGINT": true, "handleSIGTERM": true, "slowMo": 0.0, "timeout": 30000.0, "tracesDir": "/media/jiji/eb18153f-9be1-4f06-9fa8-cf63a398e614/Development/web/recipe-suggester-ai-agent-test-automation/robot-tests/results/pabot_results/0/browser/traces/temp/0ce6684b-2dfe-4238-931c-0aec5a4dafcf"}</msg>
+<msg time="2025-02-13T00:33:28.049828" level="INFO">Starting Browser process /media/jiji/eb18153f-9be1-4f06-9fa8-cf63a398e614/Development/web/recipe-suggester-ai-agent-test-automation/robot-tests/.venv/lib/python3.12/site-packages/Browser/wrapper/index.js using port 57755</msg>
+<msg time="2025-02-13T00:33:28.049945" level="INFO">Node startup parameters: ['node', '/media/jiji/eb18153f-9be1-4f06-9fa8-cf63a398e614/Development/web/recipe-suggester-ai-agent-test-automation/robot-tests/.venv/lib/python3.12/site-packages/Browser/wrapper/index.js', '57755']</msg>
+<msg time="2025-02-13T00:33:28.723897" level="INFO">Successfully created browser with options: {"browser":"chromium","headless":true,"chromiumSandbox":false,"devtools":false,"handleSIGHUP":true,"handleSIGINT":true,"handleSIGTERM":true,"slowMo":0,"timeout":30000,"tracesDir":"/media/jiji/eb18153f-9be1-4f06-9fa8-cf63a398e614/Development/web/recipe-suggester-ai-agent-test-automation/robot-tests/results/pabot_results/0/browser/traces/temp/0ce6684b-2dfe-4238-931c-0aec5a4dafcf"}</msg>
 <arg>chromium</arg>
-<status status="FAIL" start="2025-02-12T18:47:26.724428" elapsed="0.003424">ValueError: chromium is not a supported browser.</status>
+<tag>BrowserControl</tag>
+<tag>Setter</tag>
+<doc>Create a new playwright Browser with specified options.</doc>
+<status status="PASS" start="2025-02-13T00:33:28.043197" elapsed="0.681014"/>
 </kw>
-<kw name="Maximize Browser Window" owner="SeleniumLibrary">
-<doc>Maximizes current browser window.</doc>
-<status status="NOT RUN" start="2025-02-12T18:47:26.727954" elapsed="0.000037"/>
+<kw name="New Page" owner="Browser">
+<msg time="2025-02-13T00:33:28.915994" level="INFO">Successfully initialized new page object and opened url: http://localhost:8002/</msg>
+<msg time="2025-02-13T00:33:28.916087" level="INFO">No context was open. New context was automatically opened when this page is created.</msg>
+<arg>${GLOBAL_CLIENT_BASE_URL}/</arg>
+<tag>BrowserControl</tag>
+<tag>Setter</tag>
+<doc>Open a new Page.</doc>
+<status status="PASS" start="2025-02-13T00:33:28.724560" elapsed="0.191677"/>
 </kw>
-<status status="FAIL" start="2025-02-12T18:47:26.724184" elapsed="0.003885">ValueError: chromium is not a supported browser.</status>
-</kw>
-<kw name="Log" owner="BuiltIn">
-<arg>Waiting for input to be present in the DOM...</arg>
-<doc>Logs the given message with the given level.</doc>
-<status status="NOT RUN" start="2025-02-12T18:47:26.728170" elapsed="0.000039"/>
-</kw>
-<kw name="Wait Until Page Contains Element" owner="SeleniumLibrary">
-<arg>${SUITE_LOCATOR_INGREDIENTS_INPUT}</arg>
-<arg>timeout=5s</arg>
-<doc>Waits until the element ``locator`` appears on the current page.</doc>
-<status status="NOT RUN" start="2025-02-12T18:47:26.728300" elapsed="0.000038"/>
+<status status="PASS" start="2025-02-13T00:33:28.042782" elapsed="0.873597"/>
 </kw>
 <kw name="Log" owner="BuiltIn">
-<arg>Input is present.</arg>
-<doc>Logs the given message with the given level.</doc>
-<status status="NOT RUN" start="2025-02-12T18:47:26.728423" elapsed="0.000034"/>
-</kw>
-<kw name="Log" owner="BuiltIn">
+<msg time="2025-02-13T00:33:28.916811" level="INFO">Inputing ingredients...</msg>
 <arg>Inputing ingredients...</arg>
 <doc>Logs the given message with the given level.</doc>
-<status status="NOT RUN" start="2025-02-12T18:47:26.728538" elapsed="0.000033"/>
+<status status="PASS" start="2025-02-13T00:33:28.916557" elapsed="0.000320"/>
 </kw>
 <kw name="Create List" owner="BuiltIn">
+<msg time="2025-02-13T00:33:28.917280" level="INFO">@{ingredients} = [ egg | buttter ]</msg>
 <var>@{ingredients}</var>
 <arg>egg</arg>
 <arg>buttter</arg>
 <doc>Returns a list containing given items.</doc>
-<status status="NOT RUN" start="2025-02-12T18:47:26.728653" elapsed="0.000040"/>
+<status status="PASS" start="2025-02-13T00:33:28.917019" elapsed="0.000307"/>
 </kw>
 <for flavor="IN">
 <iter>
-<kw name="Input Text" owner="SeleniumLibrary">
+<kw name="Fill Text" owner="Browser">
+<msg time="2025-02-13T00:33:28.918594" level="INFO">Fills the text 'egg' in the given field.</msg>
 <arg>${SUITE_LOCATOR_INGREDIENTS_INPUT}</arg>
 <arg>${ingredient}</arg>
-<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
-<status status="NOT RUN" start="2025-02-12T18:47:26.728990" elapsed="0.000046"/>
+<tag>PageContent</tag>
+<tag>Setter</tag>
+<doc>Clears and fills the given ``txt`` into the text field found by ``selector``.</doc>
+<status status="PASS" start="2025-02-13T00:33:28.918024" elapsed="0.873990"/>
 </kw>
-<kw name="Press Keys" owner="SeleniumLibrary">
+<kw name="Press Keys" owner="Browser">
 <arg>${SUITE_LOCATOR_INGREDIENTS_INPUT}</arg>
-<arg>SPACE</arg>
-<doc>Simulates the user pressing key(s) to an element or on the active browser.</doc>
-<status status="NOT RUN" start="2025-02-12T18:47:26.729138" elapsed="0.000036"/>
+<arg>Space</arg>
+<tag>PageContent</tag>
+<tag>Setter</tag>
+<doc>Types the given key combination into element found by ``selector``.</doc>
+<status status="PASS" start="2025-02-13T00:33:29.792432" elapsed="0.025674"/>
 </kw>
-<var name="${ingredient}"/>
-<status status="NOT RUN" start="2025-02-12T18:47:26.728881" elapsed="0.000332"/>
+<var name="${ingredient}">egg</var>
+<status status="PASS" start="2025-02-13T00:33:28.917784" elapsed="0.900520"/>
+</iter>
+<iter>
+<kw name="Fill Text" owner="Browser">
+<msg time="2025-02-13T00:33:29.819933" level="INFO">Fills the text 'buttter' in the given field.</msg>
+<arg>${SUITE_LOCATOR_INGREDIENTS_INPUT}</arg>
+<arg>${ingredient}</arg>
+<tag>PageContent</tag>
+<tag>Setter</tag>
+<doc>Clears and fills the given ``txt`` into the text field found by ``selector``.</doc>
+<status status="PASS" start="2025-02-13T00:33:29.819016" elapsed="0.013226"/>
+</kw>
+<kw name="Press Keys" owner="Browser">
+<arg>${SUITE_LOCATOR_INGREDIENTS_INPUT}</arg>
+<arg>Space</arg>
+<tag>PageContent</tag>
+<tag>Setter</tag>
+<doc>Types the given key combination into element found by ``selector``.</doc>
+<status status="PASS" start="2025-02-13T00:33:29.832518" elapsed="0.018588"/>
+</kw>
+<var name="${ingredient}">buttter</var>
+<status status="PASS" start="2025-02-13T00:33:29.818636" elapsed="0.032648"/>
 </iter>
 <var>${ingredient}</var>
 <value>@{ingredients}</value>
-<status status="NOT RUN" start="2025-02-12T18:47:26.728760" elapsed="0.000502"/>
+<status status="PASS" start="2025-02-13T00:33:28.917479" elapsed="0.933935"/>
 </for>
 <kw name="Log" owner="BuiltIn">
+<msg time="2025-02-13T00:33:29.852096" level="INFO">Ingredients entered.</msg>
 <arg>Ingredients entered.</arg>
 <doc>Logs the given message with the given level.</doc>
-<status status="NOT RUN" start="2025-02-12T18:47:26.729367" elapsed="0.000036"/>
+<status status="PASS" start="2025-02-13T00:33:29.851744" elapsed="0.000454"/>
 </kw>
 <kw name="Log" owner="BuiltIn">
+<msg time="2025-02-13T00:33:29.852686" level="INFO">Generating recipe suggestions...</msg>
 <arg>Generating recipe suggestions...</arg>
 <doc>Logs the given message with the given level.</doc>
-<status status="NOT RUN" start="2025-02-12T18:47:26.729486" elapsed="0.000033"/>
+<status status="PASS" start="2025-02-13T00:33:29.852425" elapsed="0.000354"/>
 </kw>
-<kw name="Click Element" owner="SeleniumLibrary">
+<kw name="Click" owner="Browser">
+<msg time="2025-02-13T00:33:29.853836" level="INFO">Clicks the element '//*[local-name()='svg' and @class='lucide lucide-sparkles']/parent::button'.</msg>
 <arg>${SUITE_LOCATOR_SUGGEST_RECIPE_BUTTON}</arg>
-<doc>Click the element identified by ``locator``.</doc>
-<status status="NOT RUN" start="2025-02-12T18:47:26.729620" elapsed="0.000035"/>
-</kw>
-<kw name="Wait Until Page Contains Element" owner="SeleniumLibrary">
-<arg>${SUITE_LOCATOR_SUGGESTED_RECIPES_CONTAINER}/child::*</arg>
-<arg>timeout=30s</arg>
-<doc>Waits until the element ``locator`` appears on the current page.</doc>
-<status status="NOT RUN" start="2025-02-12T18:47:26.729754" elapsed="0.000036"/>
+<tag>PageContent</tag>
+<tag>Setter</tag>
+<doc>Simulates mouse click on the element found by ``selector``.</doc>
+<status status="PASS" start="2025-02-13T00:33:29.853001" elapsed="0.060225"/>
 </kw>
 <kw name="Log" owner="BuiltIn">
+<msg time="2025-02-13T00:33:29.914114" level="INFO">Generated recipe suggestions.</msg>
 <arg>Generated recipe suggestions.</arg>
 <doc>Logs the given message with the given level.</doc>
-<status status="NOT RUN" start="2025-02-12T18:47:26.729875" elapsed="0.000039"/>
+<status status="PASS" start="2025-02-13T00:33:29.913701" elapsed="0.000524"/>
 </kw>
-<kw name="Get WebElements" owner="SeleniumLibrary">
+<kw name="Get Elements" owner="Browser">
+<msg time="2025-02-13T00:33:35.738371" level="INFO">Found locator('//div[@id=\'header\']/following-sibling::div/child::*[1]').first() Locators successfully.</msg>
+<msg time="2025-02-13T00:33:35.738673" level="INFO">${recipe_suggestions} = ["//div[@id='header']/following-sibling::div/child::*[1] &gt;&gt; nth=0"]</msg>
 <var>${recipe_suggestions}</var>
-<arg>${SUITE_LOCATOR_SUGGESTED_RECIPES_CONTAINER}/child::*</arg>
-<doc>Returns a list of WebElement objects matching the ``locator``.</doc>
-<status status="NOT RUN" start="2025-02-12T18:47:26.730001" elapsed="0.000034"/>
+<arg>${SUITE_LOCATOR_SUGGESTED_RECIPES_CONTAINER}/child::*[1]</arg>
+<tag>Getter</tag>
+<tag>PageContent</tag>
+<doc>Returns a reference to Playwright [https://playwright.dev/docs/api/class-locator|Locator]
+for all matched elements by ``selector``.</doc>
+<status status="PASS" start="2025-02-13T00:33:29.914622" elapsed="5.824089"/>
 </kw>
 <kw name="Should Not Be Empty" owner="BuiltIn">
+<msg time="2025-02-13T00:33:35.739251" level="INFO">Length is 1.</msg>
 <arg>${recipe_suggestions}</arg>
 <doc>Verifies that the given item is not empty.</doc>
-<status status="NOT RUN" start="2025-02-12T18:47:26.730122" elapsed="0.000035"/>
+<status status="PASS" start="2025-02-13T00:33:35.738929" elapsed="0.000410"/>
 </kw>
 <kw name="Log" owner="BuiltIn">
+<msg time="2025-02-13T00:33:35.739800" level="INFO">Capturing screenshots of generated suggestions...</msg>
 <arg>Capturing screenshots of generated suggestions...</arg>
 <doc>Logs the given message with the given level.</doc>
-<status status="NOT RUN" start="2025-02-12T18:47:26.730241" elapsed="0.000035"/>
+<status status="PASS" start="2025-02-13T00:33:35.739538" elapsed="0.000351"/>
 </kw>
 <for flavor="IN ENUMERATE">
 <iter>
-<kw name="Capture Element Screenshot" owner="SeleniumLibrary">
-<arg>${recipe_suggestion}</arg>
+<kw name="Take Screenshot" owner="Browser">
+<msg time="2025-02-13T00:33:35.843338" level="INFO" html="true">&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td colspan="3"&gt;&lt;a href="browser/screenshot/generated_recipe_suggestion_0.png.png" target="_blank"&gt;&lt;img src="browser/screenshot/generated_recipe_suggestion_0.png.png" width="800px"/&gt;&lt;/a&gt;</msg>
 <arg>generated_recipe_suggestion_${index}.png</arg>
-<doc>Captures a screenshot from the element identified by ``locator`` and embeds it into log file.</doc>
-<status status="NOT RUN" start="2025-02-12T18:47:26.730512" elapsed="0.000202"/>
+<arg>${recipe_suggestion}</arg>
+<tag>PageContent</tag>
+<doc>Takes a screenshot of the current window or element and saves it to disk.</doc>
+<status status="PASS" start="2025-02-13T00:33:35.740522" elapsed="0.103197"/>
 </kw>
-<var name="${index}"/>
-<var name="${recipe_suggestion}"/>
-<status status="NOT RUN" start="2025-02-12T18:47:26.730408" elapsed="0.000355"/>
+<var name="${index}">0</var>
+<var name="${recipe_suggestion}">//div[@id='header']/following-sibling::div/child::*[1] &gt;&gt; nth=0</var>
+<status status="PASS" start="2025-02-13T00:33:35.740341" elapsed="0.103561"/>
 </iter>
 <var>${index}</var>
 <var>${recipe_suggestion}</var>
 <value>@{recipe_suggestions}</value>
-<status status="NOT RUN" start="2025-02-12T18:47:26.730329" elapsed="0.000523"/>
+<status status="PASS" start="2025-02-13T00:33:35.740024" elapsed="0.104036"/>
 </for>
 <kw name="Log" owner="BuiltIn">
+<msg time="2025-02-13T00:33:35.844829" level="INFO">Generated suggestions screenshots captured.</msg>
 <arg>Generated suggestions screenshots captured.</arg>
 <doc>Logs the given message with the given level.</doc>
-<status status="NOT RUN" start="2025-02-12T18:47:26.730974" elapsed="0.000042"/>
+<status status="PASS" start="2025-02-13T00:33:35.844383" elapsed="0.000596"/>
 </kw>
-<kw name="Close Browser" owner="SeleniumLibrary">
+<kw name="Close Browser" owner="Browser">
+<msg time="2025-02-13T00:33:35.896244" level="INFO">Closed browser</msg>
+<tag>BrowserControl</tag>
+<tag>Setter</tag>
 <doc>Closes the current browser.</doc>
-<status status="NOT RUN" start="2025-02-12T18:47:26.731112" elapsed="0.000040"/>
+<status status="PASS" start="2025-02-13T00:33:35.845295" elapsed="0.051149"/>
 </kw>
 <tag>Positive</tag>
 <tag>Smoke</tag>
-<status status="FAIL" start="2025-02-12T18:47:26.723778" elapsed="0.007523">ValueError: chromium is not a supported browser.</status>
-</test>
-<test id="s1-s1-t2" name="Empty Input Validation" line="52">
-<kw name="Open Recipe Suggestions Page" owner="recipe_suggestions_resources">
-<kw name="Open Browser And Maximize" owner="helpers">
-<kw name="Open Browser" owner="SeleniumLibrary">
-<msg time="2025-02-12T18:47:26.733164" level="INFO">Opening browser 'chromium' to base url 'http://localhost:8002/'.</msg>
-<msg time="2025-02-12T18:47:26.733218" level="INFO">Cannot capture screenshot because no browser is open.</msg>
-<msg time="2025-02-12T18:47:26.733303" level="FAIL">ValueError: chromium is not a supported browser.</msg>
-<arg>${url}</arg>
-<arg>${browser}</arg>
-<doc>Opens a new browser instance to the optional ``url``.</doc>
-<status status="FAIL" start="2025-02-12T18:47:26.732897" elapsed="0.000818">ValueError: chromium is not a supported browser.</status>
-</kw>
-<kw name="Maximize Browser Window" owner="SeleniumLibrary">
-<doc>Maximizes current browser window.</doc>
-<status status="NOT RUN" start="2025-02-12T18:47:26.733969" elapsed="0.000047"/>
-</kw>
-<arg>${GLOBAL_CLIENT_BASE_URL}/</arg>
-<arg>chromium</arg>
-<status status="FAIL" start="2025-02-12T18:47:26.732355" elapsed="0.001761">ValueError: chromium is not a supported browser.</status>
-</kw>
-<kw name="Maximize Browser Window" owner="SeleniumLibrary">
-<doc>Maximizes current browser window.</doc>
-<status status="NOT RUN" start="2025-02-12T18:47:26.734231" elapsed="0.000042"/>
-</kw>
-<status status="FAIL" start="2025-02-12T18:47:26.731957" elapsed="0.002399">ValueError: chromium is not a supported browser.</status>
-</kw>
-<kw name="Log" owner="BuiltIn">
-<arg>Waiting for input to be present in the DOM...</arg>
-<doc>Logs the given message with the given level.</doc>
-<status status="NOT RUN" start="2025-02-12T18:47:26.734465" elapsed="0.000059"/>
-</kw>
-<kw name="Wait Until Page Contains Element" owner="SeleniumLibrary">
-<arg>${SUITE_LOCATOR_INGREDIENTS_INPUT}</arg>
-<arg>timeout=5s</arg>
-<doc>Waits until the element ``locator`` appears on the current page.</doc>
-<status status="NOT RUN" start="2025-02-12T18:47:26.734630" elapsed="0.000040"/>
-</kw>
-<kw name="Log" owner="BuiltIn">
-<arg>Input is present.</arg>
-<doc>Logs the given message with the given level.</doc>
-<status status="NOT RUN" start="2025-02-12T18:47:26.734777" elapsed="0.000038"/>
-</kw>
-<kw name="Log" owner="BuiltIn">
-<arg>Verifying input validation...</arg>
-<doc>Logs the given message with the given level.</doc>
-<status status="NOT RUN" start="2025-02-12T18:47:26.734904" elapsed="0.000037"/>
-</kw>
-<kw name="Clear Element Text" owner="SeleniumLibrary">
-<arg>${SUITE_LOCATOR_INGREDIENTS_INPUT}</arg>
-<doc>Clears the value of the text-input-element identified by ``locator``.</doc>
-<status status="NOT RUN" start="2025-02-12T18:47:26.735032" elapsed="0.000038"/>
-</kw>
-<kw name="Log" owner="BuiltIn">
-<arg>Cleared ingredients input value</arg>
-<doc>Logs the given message with the given level.</doc>
-<status status="NOT RUN" start="2025-02-12T18:47:26.735163" elapsed="0.000036"/>
-</kw>
-<kw name="Log" owner="BuiltIn">
-<arg>Entering space character using spacebar to the input...</arg>
-<doc>Logs the given message with the given level.</doc>
-<status status="NOT RUN" start="2025-02-12T18:47:26.735286" elapsed="0.000035"/>
-</kw>
-<kw name="Set Focus To Element" owner="SeleniumLibrary">
-<arg>${SUITE_LOCATOR_INGREDIENTS_INPUT}</arg>
-<doc>Sets the focus to the element identified by ``locator``.</doc>
-<status status="NOT RUN" start="2025-02-12T18:47:26.735413" elapsed="0.000036"/>
-</kw>
-<kw name="Press Keys" owner="SeleniumLibrary">
-<arg>${SUITE_LOCATOR_INGREDIENTS_INPUT}</arg>
-<arg>SPACE</arg>
-<doc>Simulates the user pressing key(s) to an element or on the active browser.</doc>
-<status status="NOT RUN" start="2025-02-12T18:47:26.735545" elapsed="0.000037"/>
-</kw>
-<kw name="Log" owner="BuiltIn">
-<arg>Space character entered.</arg>
-<doc>Logs the given message with the given level.</doc>
-<status status="NOT RUN" start="2025-02-12T18:47:26.735679" elapsed="0.000044"/>
-</kw>
-<kw name="Log" owner="BuiltIn">
-<arg>Validating that no ingredient was added...</arg>
-<doc>Logs the given message with the given level.</doc>
-<status status="NOT RUN" start="2025-02-12T18:47:26.735811" elapsed="0.000036"/>
-</kw>
-<kw name="Capture Page Screenshot" owner="SeleniumLibrary">
-<arg>no_ingredient_added.png</arg>
-<doc>Takes a screenshot of the current page and embeds it into a log file.</doc>
-<status status="NOT RUN" start="2025-02-12T18:47:26.735942" elapsed="0.000036"/>
-</kw>
-<kw name="Get WebElements" owner="SeleniumLibrary">
-<var>${inputted_ingredients}</var>
-<arg>${SUITE_LOCATOR_INPUTTED_INGREDIENTS_CONTAINER}/child::*</arg>
-<doc>Returns a list of WebElement objects matching the ``locator``.</doc>
-<status status="NOT RUN" start="2025-02-12T18:47:26.736073" elapsed="0.000037"/>
-</kw>
-<kw name="Should Be Empty" owner="BuiltIn">
-<arg>${inputted_ingredients}</arg>
-<doc>Verifies that the given item is empty.</doc>
-<status status="NOT RUN" start="2025-02-12T18:47:26.736198" elapsed="0.000036"/>
-</kw>
-<kw name="Log" owner="BuiltIn">
-<arg>Validated no ingredient was added.</arg>
-<doc>Logs the given message with the given level.</doc>
-<status status="NOT RUN" start="2025-02-12T18:47:26.736344" elapsed="0.000039"/>
-</kw>
-<kw name="Close Browser" owner="SeleniumLibrary">
-<doc>Closes the current browser.</doc>
-<status status="NOT RUN" start="2025-02-12T18:47:26.736475" elapsed="0.000037"/>
-</kw>
-<tag>InputValidation</tag>
-<tag>Negative</tag>
-<status status="FAIL" start="2025-02-12T18:47:26.731551" elapsed="0.005106">ValueError: chromium is not a supported browser.</status>
-</test>
-<test id="s1-s1-t3" name="Numeric Input Validation" line="77">
-<kw name="Open Recipe Suggestions Page" owner="recipe_suggestions_resources">
-<kw name="Open Browser And Maximize" owner="helpers">
-<kw name="Open Browser" owner="SeleniumLibrary">
-<msg time="2025-02-12T18:47:26.738138" level="INFO">Opening browser 'chromium' to base url 'http://localhost:8002/'.</msg>
-<msg time="2025-02-12T18:47:26.738186" level="INFO">Cannot capture screenshot because no browser is open.</msg>
-<msg time="2025-02-12T18:47:26.738264" level="FAIL">ValueError: chromium is not a supported browser.</msg>
-<arg>${url}</arg>
-<arg>${browser}</arg>
-<doc>Opens a new browser instance to the optional ``url``.</doc>
-<status status="FAIL" start="2025-02-12T18:47:26.737893" elapsed="0.000897">ValueError: chromium is not a supported browser.</status>
-</kw>
-<kw name="Maximize Browser Window" owner="SeleniumLibrary">
-<doc>Maximizes current browser window.</doc>
-<status status="NOT RUN" start="2025-02-12T18:47:26.739195" elapsed="0.000075"/>
-</kw>
-<arg>${GLOBAL_CLIENT_BASE_URL}/</arg>
-<arg>chromium</arg>
-<status status="FAIL" start="2025-02-12T18:47:26.737468" elapsed="0.001962">ValueError: chromium is not a supported browser.</status>
-</kw>
-<kw name="Maximize Browser Window" owner="SeleniumLibrary">
-<doc>Maximizes current browser window.</doc>
-<status status="NOT RUN" start="2025-02-12T18:47:26.739574" elapsed="0.000046"/>
-</kw>
-<status status="FAIL" start="2025-02-12T18:47:26.737215" elapsed="0.002504">ValueError: chromium is not a supported browser.</status>
-</kw>
-<kw name="Log" owner="BuiltIn">
-<arg>Waiting for input to be present in the DOM...</arg>
-<doc>Logs the given message with the given level.</doc>
-<status status="NOT RUN" start="2025-02-12T18:47:26.739833" elapsed="0.000044"/>
-</kw>
-<kw name="Wait Until Page Contains Element" owner="SeleniumLibrary">
-<arg>${SUITE_LOCATOR_INGREDIENTS_INPUT}</arg>
-<arg>timeout=5s</arg>
-<doc>Waits until the element ``locator`` appears on the current page.</doc>
-<status status="NOT RUN" start="2025-02-12T18:47:26.739979" elapsed="0.000086"/>
-</kw>
-<kw name="Log" owner="BuiltIn">
-<arg>Input is present.</arg>
-<doc>Logs the given message with the given level.</doc>
-<status status="NOT RUN" start="2025-02-12T18:47:26.740166" elapsed="0.000040"/>
-</kw>
-<kw name="Log" owner="BuiltIn">
-<arg>Verifying input validation for numeric values...</arg>
-<doc>Logs the given message with the given level.</doc>
-<status status="NOT RUN" start="2025-02-12T18:47:26.740296" elapsed="0.000037"/>
-</kw>
-<kw name="Clear Element Text" owner="SeleniumLibrary">
-<arg>${SUITE_LOCATOR_INGREDIENTS_INPUT}</arg>
-<doc>Clears the value of the text-input-element identified by ``locator``.</doc>
-<status status="NOT RUN" start="2025-02-12T18:47:26.740480" elapsed="0.000060"/>
-</kw>
-<kw name="Input Text" owner="SeleniumLibrary">
-<arg>${SUITE_LOCATOR_INGREDIENTS_INPUT}</arg>
-<arg>12345</arg>
-<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
-<status status="NOT RUN" start="2025-02-12T18:47:26.740701" elapsed="0.000063"/>
-</kw>
-<kw name="Press Keys" owner="SeleniumLibrary">
-<arg>${SUITE_LOCATOR_INGREDIENTS_INPUT}</arg>
-<arg>SPACE</arg>
-<doc>Simulates the user pressing key(s) to an element or on the active browser.</doc>
-<status status="NOT RUN" start="2025-02-12T18:47:26.740932" elapsed="0.000062"/>
-</kw>
-<kw name="Capture Page Screenshot" owner="SeleniumLibrary">
-<arg>numeric_input_validation.png</arg>
-<doc>Takes a screenshot of the current page and embeds it into a log file.</doc>
-<status status="NOT RUN" start="2025-02-12T18:47:26.741159" elapsed="0.000062"/>
-</kw>
-<kw name="Get WebElements" owner="SeleniumLibrary">
-<var>${inputted_ingredients}</var>
-<arg>${SUITE_LOCATOR_INPUTTED_INGREDIENTS_CONTAINER}/child::*</arg>
-<doc>Returns a list of WebElement objects matching the ``locator``.</doc>
-<status status="NOT RUN" start="2025-02-12T18:47:26.741382" elapsed="0.000060"/>
-</kw>
-<kw name="Should Be Empty" owner="BuiltIn">
-<arg>${inputted_ingredients}</arg>
-<doc>Verifies that the given item is empty.</doc>
-<status status="NOT RUN" start="2025-02-12T18:47:26.741610" elapsed="0.000070"/>
-</kw>
-<kw name="Log" owner="BuiltIn">
-<arg>Numeric values are correctly rejected</arg>
-<doc>Logs the given message with the given level.</doc>
-<status status="NOT RUN" start="2025-02-12T18:47:26.741836" elapsed="0.000063"/>
-</kw>
-<kw name="Close Browser" owner="SeleniumLibrary">
-<doc>Closes the current browser.</doc>
-<status status="NOT RUN" start="2025-02-12T18:47:26.742058" elapsed="0.000068"/>
-</kw>
-<tag>InputValidation</tag>
-<tag>Negative</tag>
-<status status="FAIL" start="2025-02-12T18:47:26.736896" elapsed="0.005429">ValueError: chromium is not a supported browser.</status>
-</test>
-<test id="s1-s1-t4" name="Exceeding Character Limit Input Validation" line="96">
-<kw name="Open Recipe Suggestions Page" owner="recipe_suggestions_resources">
-<kw name="Open Browser And Maximize" owner="helpers">
-<kw name="Open Browser" owner="SeleniumLibrary">
-<msg time="2025-02-12T18:47:26.745195" level="INFO">Opening browser 'chromium' to base url 'http://localhost:8002/'.</msg>
-<msg time="2025-02-12T18:47:26.745267" level="INFO">Cannot capture screenshot because no browser is open.</msg>
-<msg time="2025-02-12T18:47:26.745393" level="FAIL">ValueError: chromium is not a supported browser.</msg>
-<arg>${url}</arg>
-<arg>${browser}</arg>
-<doc>Opens a new browser instance to the optional ``url``.</doc>
-<status status="FAIL" start="2025-02-12T18:47:26.744869" elapsed="0.000943">ValueError: chromium is not a supported browser.</status>
-</kw>
-<kw name="Maximize Browser Window" owner="SeleniumLibrary">
-<doc>Maximizes current browser window.</doc>
-<status status="NOT RUN" start="2025-02-12T18:47:26.746071" elapsed="0.000049"/>
-</kw>
-<arg>${GLOBAL_CLIENT_BASE_URL}/</arg>
-<arg>chromium</arg>
-<status status="FAIL" start="2025-02-12T18:47:26.743292" elapsed="0.002930">ValueError: chromium is not a supported browser.</status>
-</kw>
-<kw name="Maximize Browser Window" owner="SeleniumLibrary">
-<doc>Maximizes current browser window.</doc>
-<status status="NOT RUN" start="2025-02-12T18:47:26.746340" elapsed="0.000061"/>
-</kw>
-<status status="FAIL" start="2025-02-12T18:47:26.743030" elapsed="0.003508">ValueError: chromium is not a supported browser.</status>
-</kw>
-<kw name="Log" owner="BuiltIn">
-<arg>Waiting for input to be present in the DOM...</arg>
-<doc>Logs the given message with the given level.</doc>
-<status status="NOT RUN" start="2025-02-12T18:47:26.746718" elapsed="0.000071"/>
-</kw>
-<kw name="Wait Until Page Contains Element" owner="SeleniumLibrary">
-<arg>${SUITE_LOCATOR_INGREDIENTS_INPUT}</arg>
-<arg>timeout=5s</arg>
-<doc>Waits until the element ``locator`` appears on the current page.</doc>
-<status status="NOT RUN" start="2025-02-12T18:47:26.746961" elapsed="0.000066"/>
-</kw>
-<kw name="Log" owner="BuiltIn">
-<arg>Input is present.</arg>
-<doc>Logs the given message with the given level.</doc>
-<status status="NOT RUN" start="2025-02-12T18:47:26.747188" elapsed="0.000064"/>
-</kw>
-<kw name="Log" owner="BuiltIn">
-<arg>Verifying input validation for exceeding character limit...</arg>
-<doc>Logs the given message with the given level.</doc>
-<status status="NOT RUN" start="2025-02-12T18:47:26.747407" elapsed="0.000063"/>
-</kw>
-<kw name="Clear Element Text" owner="SeleniumLibrary">
-<arg>${SUITE_LOCATOR_INGREDIENTS_INPUT}</arg>
-<doc>Clears the value of the text-input-element identified by ``locator``.</doc>
-<status status="NOT RUN" start="2025-02-12T18:47:26.747630" elapsed="0.000070"/>
-</kw>
-<kw name="Evaluate" owner="BuiltIn">
-<var>${long_ingredient}</var>
-<arg>"a" * 256</arg>
-<doc>Evaluates the given expression in Python and returns the result.</doc>
-<status status="NOT RUN" start="2025-02-12T18:47:26.747858" elapsed="0.000065"/>
-</kw>
-<kw name="Input Text" owner="SeleniumLibrary">
-<arg>${SUITE_LOCATOR_INGREDIENTS_INPUT}</arg>
-<arg>${long_ingredient}</arg>
-<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
-<status status="NOT RUN" start="2025-02-12T18:47:26.748094" elapsed="0.000065"/>
-</kw>
-<kw name="Press Keys" owner="SeleniumLibrary">
-<arg>${SUITE_LOCATOR_INGREDIENTS_INPUT}</arg>
-<arg>SPACE</arg>
-<doc>Simulates the user pressing key(s) to an element or on the active browser.</doc>
-<status status="NOT RUN" start="2025-02-12T18:47:26.748333" elapsed="0.000065"/>
-</kw>
-<kw name="Capture Page Screenshot" owner="SeleniumLibrary">
-<arg>exceeding_character_limit_input_validation.png</arg>
-<doc>Takes a screenshot of the current page and embeds it into a log file.</doc>
-<status status="NOT RUN" start="2025-02-12T18:47:26.748571" elapsed="0.000065"/>
-</kw>
-<kw name="Get WebElements" owner="SeleniumLibrary">
-<var>${inputted_ingredients}</var>
-<arg>${SUITE_LOCATOR_INPUTTED_INGREDIENTS_CONTAINER}/child::*</arg>
-<doc>Returns a list of WebElement objects matching the ``locator``.</doc>
-<status status="NOT RUN" start="2025-02-12T18:47:26.748808" elapsed="0.000056"/>
-</kw>
-<kw name="Should Be Empty" owner="BuiltIn">
-<arg>${inputted_ingredients}</arg>
-<doc>Verifies that the given item is empty.</doc>
-<status status="NOT RUN" start="2025-02-12T18:47:26.749005" elapsed="0.000059"/>
-</kw>
-<kw name="Log" owner="BuiltIn">
-<arg>Exceeding character limit is correctly rejected</arg>
-<doc>Logs the given message with the given level.</doc>
-<status status="NOT RUN" start="2025-02-12T18:47:26.749212" elapsed="0.000060"/>
-</kw>
-<kw name="Close Browser" owner="SeleniumLibrary">
-<doc>Closes the current browser.</doc>
-<status status="NOT RUN" start="2025-02-12T18:47:26.749419" elapsed="0.000057"/>
-</kw>
-<tag>InputValidation</tag>
-<tag>Negative</tag>
-<status status="FAIL" start="2025-02-12T18:47:26.742654" elapsed="0.007042">ValueError: chromium is not a supported browser.</status>
-</test>
-<test id="s1-s1-t5" name="Special Characters Input Validation" line="116">
-<kw name="Open Recipe Suggestions Page" owner="recipe_suggestions_resources">
-<kw name="Open Browser And Maximize" owner="helpers">
-<kw name="Open Browser" owner="SeleniumLibrary">
-<msg time="2025-02-12T18:47:26.751190" level="INFO">Opening browser 'chromium' to base url 'http://localhost:8002/'.</msg>
-<msg time="2025-02-12T18:47:26.751243" level="INFO">Cannot capture screenshot because no browser is open.</msg>
-<msg time="2025-02-12T18:47:26.751329" level="FAIL">ValueError: chromium is not a supported browser.</msg>
-<arg>${url}</arg>
-<arg>${browser}</arg>
-<doc>Opens a new browser instance to the optional ``url``.</doc>
-<status status="FAIL" start="2025-02-12T18:47:26.750977" elapsed="0.000761">ValueError: chromium is not a supported browser.</status>
-</kw>
-<kw name="Maximize Browser Window" owner="SeleniumLibrary">
-<doc>Maximizes current browser window.</doc>
-<status status="NOT RUN" start="2025-02-12T18:47:26.752041" elapsed="0.000055"/>
-</kw>
-<arg>${GLOBAL_CLIENT_BASE_URL}/</arg>
-<arg>chromium</arg>
-<status status="FAIL" start="2025-02-12T18:47:26.750615" elapsed="0.001596">ValueError: chromium is not a supported browser.</status>
-</kw>
-<kw name="Maximize Browser Window" owner="SeleniumLibrary">
-<doc>Maximizes current browser window.</doc>
-<status status="NOT RUN" start="2025-02-12T18:47:26.752372" elapsed="0.000052"/>
-</kw>
-<status status="FAIL" start="2025-02-12T18:47:26.750327" elapsed="0.002192">ValueError: chromium is not a supported browser.</status>
-</kw>
-<kw name="Log" owner="BuiltIn">
-<arg>Waiting for input to be present in the DOM...</arg>
-<doc>Logs the given message with the given level.</doc>
-<status status="NOT RUN" start="2025-02-12T18:47:26.752636" elapsed="0.000055"/>
-</kw>
-<kw name="Wait Until Page Contains Element" owner="SeleniumLibrary">
-<arg>${SUITE_LOCATOR_INGREDIENTS_INPUT}</arg>
-<arg>timeout=5s</arg>
-<doc>Waits until the element ``locator`` appears on the current page.</doc>
-<status status="NOT RUN" start="2025-02-12T18:47:26.752799" elapsed="0.000040"/>
-</kw>
-<kw name="Log" owner="BuiltIn">
-<arg>Input is present.</arg>
-<doc>Logs the given message with the given level.</doc>
-<status status="NOT RUN" start="2025-02-12T18:47:26.752935" elapsed="0.000037"/>
-</kw>
-<kw name="Log" owner="BuiltIn">
-<arg>Verifying input validation for special characters...</arg>
-<doc>Logs the given message with the given level.</doc>
-<status status="NOT RUN" start="2025-02-12T18:47:26.753062" elapsed="0.000037"/>
-</kw>
-<kw name="Clear Element Text" owner="SeleniumLibrary">
-<arg>${SUITE_LOCATOR_INGREDIENTS_INPUT}</arg>
-<doc>Clears the value of the text-input-element identified by ``locator``.</doc>
-<status status="NOT RUN" start="2025-02-12T18:47:26.753190" elapsed="0.000037"/>
-</kw>
-<kw name="Input Text" owner="SeleniumLibrary">
-<arg>${SUITE_LOCATOR_INGREDIENTS_INPUT}</arg>
-<arg>!@#$%^&amp;*</arg>
-<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
-<status status="NOT RUN" start="2025-02-12T18:47:26.753318" elapsed="0.000037"/>
-</kw>
-<kw name="Press Keys" owner="SeleniumLibrary">
-<arg>${SUITE_LOCATOR_INGREDIENTS_INPUT}</arg>
-<arg>SPACE</arg>
-<doc>Simulates the user pressing key(s) to an element or on the active browser.</doc>
-<status status="NOT RUN" start="2025-02-12T18:47:26.753452" elapsed="0.000037"/>
-</kw>
-<kw name="Capture Page Screenshot" owner="SeleniumLibrary">
-<arg>special_characters_input_validation.png</arg>
-<doc>Takes a screenshot of the current page and embeds it into a log file.</doc>
-<status status="NOT RUN" start="2025-02-12T18:47:26.753583" elapsed="0.000037"/>
-</kw>
-<kw name="Get WebElements" owner="SeleniumLibrary">
-<var>${inputted_ingredients}</var>
-<arg>${SUITE_LOCATOR_INPUTTED_INGREDIENTS_CONTAINER}/child::*</arg>
-<doc>Returns a list of WebElement objects matching the ``locator``.</doc>
-<status status="NOT RUN" start="2025-02-12T18:47:26.753723" elapsed="0.000038"/>
-</kw>
-<kw name="Should Be Empty" owner="BuiltIn">
-<arg>${inputted_ingredients}</arg>
-<doc>Verifies that the given item is empty.</doc>
-<status status="NOT RUN" start="2025-02-12T18:47:26.753852" elapsed="0.000037"/>
-</kw>
-<kw name="Log" owner="BuiltIn">
-<arg>Special characters are correctly rejected</arg>
-<doc>Logs the given message with the given level.</doc>
-<status status="NOT RUN" start="2025-02-12T18:47:26.753978" elapsed="0.000037"/>
-</kw>
-<kw name="Close Browser" owner="SeleniumLibrary">
-<doc>Closes the current browser.</doc>
-<status status="NOT RUN" start="2025-02-12T18:47:26.754106" elapsed="0.000037"/>
-</kw>
-<tag>InputValidation</tag>
-<tag>Negative</tag>
-<status status="FAIL" start="2025-02-12T18:47:26.749950" elapsed="0.004332">ValueError: chromium is not a supported browser.</status>
+<status status="PASS" start="2025-02-13T00:33:28.042134" elapsed="7.854562"/>
 </test>
 <doc>Test suite for recipe suggestion functionality</doc>
-<status status="FAIL" start="2025-02-12T18:47:26.575736" elapsed="0.178951"/>
+<status status="PASS" start="2025-02-13T00:33:27.898592" elapsed="8.006058"/>
 </suite>
-<status status="FAIL" start="2025-02-12T18:47:26.553359" elapsed="0.201890"/>
+<status status="PASS" start="2025-02-13T00:33:27.881468" elapsed="8.028785"/>
 </suite>
 <statistics>
 <total>
-<stat pass="0" fail="5" skip="0">All Tests</stat>
+<stat pass="1" fail="0" skip="0">All Tests</stat>
 </total>
 <tag>
-<stat pass="0" fail="4" skip="0">InputValidation</stat>
-<stat pass="0" fail="4" skip="0">Negative</stat>
-<stat pass="0" fail="1" skip="0">Positive</stat>
-<stat pass="0" fail="1" skip="0">Smoke</stat>
+<stat pass="1" fail="0" skip="0">Positive</stat>
+<stat pass="1" fail="0" skip="0">Smoke</stat>
 </tag>
 <suite>
-<stat name="Suites" id="s1" pass="0" fail="5" skip="0">Suites</stat>
-<stat name="Recipe Suggestions" id="s1-s1" pass="0" fail="5" skip="0">Suites.Recipe Suggestions</stat>
+<stat name="Suites" id="s1" pass="1" fail="0" skip="0">Suites</stat>
+<stat name="Recipe Suggestions" id="s1-s1" pass="1" fail="0" skip="0">Suites.Recipe Suggestions</stat>
 </suite>
 </statistics>
 <errors>
