@@ -1,0 +1,10 @@
+# Files
+.pabotsuitenames
+results/pabot_results/0/robot_stderr.out
+results/pabot_results/0/robot_stdout.out
+playwright-log.txt
+
+# Directories
+__pycache__
+.venv/
+results/browser/traces
