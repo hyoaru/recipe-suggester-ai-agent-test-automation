@@ -4,4 +4,4 @@
 # pabot --processes 4 --outputdir results ./tests/suites
 
 # Opt to robot
-uv run robot --outputdir results ./tests/suites
+robot --outputdir results ./tests/suites

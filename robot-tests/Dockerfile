@@ -12,6 +12,7 @@ RUN apt-get update && apt-get install -y \
   libatk-bridge2.0-0 \
   libatspi2.0-0 \
   libxkbcommon0 \
+  libcairo2 \
   libnss3 \
   libatk1.0-0 \
   libx11-xcb1 \
@@ -31,7 +32,9 @@ RUN apt-get update && apt-get install -y \
 COPY pyproject.toml uv.lock .python-version ./
 
 RUN pip install uv && uv sync
-RUN uv run rfbrowser init
+RUN uv pip freeze > requirements.txt
+RUN pip install -r requirements.txt
+RUN rfbrowser init 
 
 COPY . .
 

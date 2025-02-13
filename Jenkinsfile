@@ -92,6 +92,10 @@ pipeline {
         sh '''
           echo "Using docker version: $(docker --version)"
           docker compose build
+          
+          echo "Building test images..."
+          cd robot-tests && docker build -t robot-tests .
+          echo "Test images built."
         '''
         echo "Building images built."
       }
@@ -110,8 +114,8 @@ pipeline {
     stage("Run tests") {
       agent {
         docker {
-          image 'python:3.12-alpine'
-          args '--user root'
+          image 'robot-tests'
+          args '--network=host'
           reuseNode true
         }
       }
@@ -122,26 +126,6 @@ pipeline {
               echo "Current directory: $(pwd)"
               ls -al
 
-              echo "Installing image dependencies..."
-              apk add bash curl
-              echo "Installed image dependencies."
-
-              echo "Installing python uv..."
-              pip install uv
-              echo "Installed python uv."
-              
-              echo "Installing dependencies..."
-              uv sync
-              echo "Installed dependencies."
-              
-              echo "Activating virual environment..."
-              source .venv/bin/activate
-              echo "Virtual environment activated."
-              
-              echo "Initialize playwright dependencies..."
-              rfbrowser init
-              echo "Playwright dependencies initialized."
-              
               echo "Running tests..."
               chmod +x ./run_tests.sh
               bash ./run_tests.sh

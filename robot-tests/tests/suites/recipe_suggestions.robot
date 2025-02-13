@@ -34,7 +34,7 @@ Add Ingredients and Generate Suggestions
     Log    Generated recipe suggestions.
     
     Log    Wait for recipe suggestions to be generated...
-    Wait For Elements State    ${SUITE_LOCATOR_SUGGESTED_RECIPES_CONTAINER}/child::*[1]    20s
+    Wait For Elements State    ${SUITE_LOCATOR_SUGGESTED_RECIPES_CONTAINER}/child::*[1]    visible    20s
     Log    Recipe suggestions generated.
 
     Log    Capturing screenshots of generated suggestions...
