@@ -94,7 +94,7 @@ pipeline {
           docker compose build
           
           echo "Building test images..."
-          cd robot-tests && docker build -t robot-tests .
+          cd robot-tests && docker build -t recipe_suggester_ai_agent_robot_tests .
           echo "Test images built."
         '''
         echo "Building images built."

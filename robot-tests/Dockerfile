@@ -1,4 +1,4 @@
-FROM python:3.12-slim
+FROM python:3.12-bookworm
 
 WORKDIR /tests
 
@@ -8,29 +8,15 @@ RUN apt-get update && apt-get install -y \
   git \
   nodejs \
   npm \
-  fonts-liberation \
+  libcups2 \
+  libnss3 \  
+  libnspr4 \
+  libatk1.0-0 \
   libatk-bridge2.0-0 \
   libatspi2.0-0 \
+  libxdamage1 \ 
   libxkbcommon0 \
-  libcairo2 \
-  libnss3 \
-  libatk1.0-0 \
-  libx11-xcb1 \
-  libxcomposite1 \
-  libxcursor1 \
-  libxdamage1 \
-  libxext6 \
-  libxfixes3 \
-  libxi6 \
-  libxrandr2 \
-  libxrender1 \
-  libasound2 \
-  libpango-1.0-0 \
-  libcups2 \
-  libgtk-3-0 \
-  libgdk-pixbuf2.0-0 \
-  libpangocairo-1.0-0 \
-  libcairo-gobject2
+  libasound2     
   
 COPY pyproject.toml uv.lock .python-version ./
 
