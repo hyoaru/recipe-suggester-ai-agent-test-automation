@@ -109,6 +109,8 @@ pipeline {
         sh '''
           docker compose up -d
           docker ps -a
+          
+          sleep 10
         '''
         echo "Test containers started."
       }

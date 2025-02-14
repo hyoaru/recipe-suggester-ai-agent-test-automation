@@ -17,29 +17,6 @@ Initialize
 
 
 *** Test Cases ***
-
-Empty Input Validation
-    [Tags]    Negative    InputValidation
-    Open Recipe Suggestions Page
-    
-    Log    Verifying input validation...
-    Clear Text    ${SUITE_LOCATOR_INGREDIENTS_INPUT}
-    Log    Cleared ingredients input value
-    
-    Log    Entering space character using spacebar to the input...
-    Focus    ${SUITE_LOCATOR_INGREDIENTS_INPUT}
-    Press Keys    ${SUITE_LOCATOR_INGREDIENTS_INPUT}    Space
-    Log    Space character entered.
-    
-    Log    Validating that no ingredient was added...
-    Take Screenshot    no_ingredient_added
-    ${inputted_ingredients_count}=    Get Element Count    ${SUITE_LOCATOR_INPUTTED_INGREDIENTS_CONTAINER}/child::*
-    Should Be Equal As Numbers    ${inputted_ingredients_count}    0
-    Log    Validated no ingredient was added.
-    
-    Close Browser
-
-
 Add Ingredients and Generate Suggestions
     [Tags]    Smoke    Positive
     Open Recipe Suggestions Page
@@ -68,6 +45,27 @@ Add Ingredients and Generate Suggestions
     END
     Log    Generated suggestions screenshots captured.
 
+    Close Browser
+
+Empty Input Validation
+    [Tags]    Negative    InputValidation
+    Open Recipe Suggestions Page
+    
+    Log    Verifying input validation...
+    Clear Text    ${SUITE_LOCATOR_INGREDIENTS_INPUT}
+    Log    Cleared ingredients input value
+    
+    Log    Entering space character using spacebar to the input...
+    Focus    ${SUITE_LOCATOR_INGREDIENTS_INPUT}
+    Press Keys    ${SUITE_LOCATOR_INGREDIENTS_INPUT}    Space
+    Log    Space character entered.
+    
+    Log    Validating that no ingredient was added...
+    Take Screenshot    no_ingredient_added
+    ${inputted_ingredients_count}=    Get Element Count    ${SUITE_LOCATOR_INPUTTED_INGREDIENTS_CONTAINER}/child::*
+    Should Be Equal As Numbers    ${inputted_ingredients_count}    0
+    Log    Validated no ingredient was added.
+    
     Close Browser
     
 Numeric Input Validation
