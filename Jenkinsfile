@@ -141,6 +141,23 @@ pipeline {
       }
     }
     
+    stage('Publish Test Reports') {
+      steps {
+        dir('./robot-tests') {
+          robot(
+            outputPath: "./results",
+            passThreshold: 100.0,
+            unstableThreshold: 90.0,
+            disableArchiveOutput: true,
+            outputFileName: "output.xml",
+            logFileName: 'log.html',
+            reportFileName: 'report.html',
+            countSkippedTests: true,
+          )
+        }
+      }
+    }
+    
     stage('Stop Test Containers') {
       steps {
         echo "Stopping test containers..."
