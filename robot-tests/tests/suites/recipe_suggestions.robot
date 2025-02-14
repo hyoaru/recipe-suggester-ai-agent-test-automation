@@ -17,35 +17,6 @@ Initialize
 
 
 *** Test Cases ***
-Add Ingredients and Generate Suggestions
-    [Tags]    Smoke    Positive
-    Open Recipe Suggestions Page
-
-    Log    Inputing ingredients...
-    @{ingredients}    Create List    egg    buttter
-    FOR    ${ingredient}    IN    @{ingredients}
-        Fill Text    ${SUITE_LOCATOR_INGREDIENTS_INPUT}    ${ingredient}
-        Press Keys    ${SUITE_LOCATOR_INGREDIENTS_INPUT}    Space
-    END
-    Log    Ingredients entered.
-    
-    Log    Generating recipe suggestions...
-    Click    ${SUITE_LOCATOR_SUGGEST_RECIPE_BUTTON}
-    Log    Generated recipe suggestions.
-    
-    Log    Wait for recipe suggestions to be generated...
-    Wait For Elements State    ${SUITE_LOCATOR_SUGGESTED_RECIPES_CONTAINER}/child::*[1]    visible    20s
-    Log    Recipe suggestions generated.
-
-    Log    Capturing screenshots of generated suggestions...
-    ${recipe_suggestions}=    Get Elements    ${SUITE_LOCATOR_SUGGESTED_RECIPES_CONTAINER}/child::*
-    Should Not Be Empty    ${recipe_suggestions}
-    FOR    ${index}    ${recipe_suggestion}    IN ENUMERATE    @{recipe_suggestions}
-        Take Screenshot    generated_recipe_suggestion_${index}    ${recipe_suggestion}
-    END
-    Log    Generated suggestions screenshots captured.
-
-    Close Browser
 
 Empty Input Validation
     [Tags]    Negative    InputValidation
@@ -66,6 +37,37 @@ Empty Input Validation
     Should Be Equal As Numbers    ${inputted_ingredients_count}    0
     Log    Validated no ingredient was added.
     
+    Close Browser
+
+
+Add Ingredients and Generate Suggestions
+    [Tags]    Smoke    Positive
+    Open Recipe Suggestions Page
+
+    Log    Inputing ingredients...
+    @{ingredients}    Create List    egg    buttter
+    FOR    ${ingredient}    IN    @{ingredients}
+        Fill Text    ${SUITE_LOCATOR_INGREDIENTS_INPUT}    ${ingredient}
+        Press Keys    ${SUITE_LOCATOR_INGREDIENTS_INPUT}    Space
+    END
+    Log    Ingredients entered.
+    
+    Log    Generating recipe suggestions...
+    Click    ${SUITE_LOCATOR_SUGGEST_RECIPE_BUTTON}
+    Log    Generated recipe suggestions.
+    
+    Log    Wait for recipe suggestions to be generated...
+    Wait For Elements State    ${SUITE_LOCATOR_SUGGESTED_RECIPES_CONTAINER}/child::*[1]
+    Log    Recipe suggestions generated.
+
+    Log    Capturing screenshots of generated suggestions...
+    ${recipe_suggestions}=    Get Elements    ${SUITE_LOCATOR_SUGGESTED_RECIPES_CONTAINER}/child::*
+    Should Not Be Empty    ${recipe_suggestions}
+    FOR    ${index}    ${recipe_suggestion}    IN ENUMERATE    @{recipe_suggestions}
+        Take Screenshot    generated_recipe_suggestion_${index}    ${recipe_suggestion}
+    END
+    Log    Generated suggestions screenshots captured.
+
     Close Browser
     
 Numeric Input Validation

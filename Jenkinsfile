@@ -96,6 +96,8 @@ pipeline {
           echo "Building test images..."
           cd robot-tests && docker build -t recipe_suggester_ai_agent_robot_tests .
           echo "Test images built."
+          
+          docker images
         '''
         echo "Building images built."
       }
@@ -106,6 +108,7 @@ pipeline {
         echo "Starting test containers..."
         sh '''
           docker compose up -d
+          docker ps -a
         '''
         echo "Test containers started."
       }
