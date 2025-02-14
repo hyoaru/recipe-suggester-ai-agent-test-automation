@@ -194,7 +194,12 @@ pipeline {
         
         // Remove dangling images
         sh '''
-          docker image rmi $(docker images -f "dangling=true" -q)
+          danglingImages=$(docker images -f "dangling=true" -q)
+          if [ -n "$danglingImages" ]; then
+            docker image rmi $danglingImages
+          else
+            echo "No dangling images to remove."
+          fi
         '''
       }
     }
