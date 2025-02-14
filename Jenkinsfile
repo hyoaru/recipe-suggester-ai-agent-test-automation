@@ -174,6 +174,11 @@ pipeline {
         causes.each { cause ->
           echo "Build cause: ${cause.shortDescription}"
         }
+        
+        // Remove dangling images
+        sh '''
+          docker image rmi $(docker images -f "dangling=true" -q)
+        '''
       }
     }
 
