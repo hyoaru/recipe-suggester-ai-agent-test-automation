@@ -114,7 +114,7 @@ pipeline {
     stage("Run tests") {
       agent {
         docker {
-          image 'robot-tests'
+          image 'recipe_suggester_ai_agent_robot_tests'
           args '--network=host'
           reuseNode true
         }
@@ -170,10 +170,6 @@ pipeline {
           echo "Build cause: ${cause.shortDescription}"
         }
       }
-
-      sh '''
-        yes | docker image prune -a
-      '''
     }
 
     success {
