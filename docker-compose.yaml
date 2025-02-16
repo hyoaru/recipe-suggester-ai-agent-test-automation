@@ -30,6 +30,7 @@ services:
 
   recipe_suggester_ai_agent_api_fastapi:
     build: ./server
+    restart: unless-stopped
     container_name: recipe_suggester_ai_agent_api_fastapi
     working_dir: /app
     volumes:
@@ -45,3 +46,4 @@ networks:
 
 volumes:
   client_web_volume_node_modules:
+
