@@ -17,16 +17,12 @@ RUN apt-get update && apt-get install -y \
   libxdamage1 \ 
   libxkbcommon0 \
   libasound2     
-  
+
 COPY pyproject.toml uv.lock .python-version ./
 
 RUN pip install uv && uv sync
 RUN uv pip freeze > requirements.txt
 RUN pip install -r requirements.txt
 RUN rfbrowser init 
-
-COPY . .
-
-RUN chmod +x ./run_tests.sh
 
 CMD ["bash", "run_tests.sh"]
